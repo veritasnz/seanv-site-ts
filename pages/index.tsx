@@ -5,18 +5,27 @@ import {
   REVALIDATION_DUR,
 } from "../lib/constants";
 import { getAllPosts } from "../lib/posts-api";
-import { getWorksData } from "../lib/works-api";
 
-import Hero from "../components/Home/Hero";
 import About from "../components/Home/About";
+import Hero from "../components/Home/Hero";
 
+import { getWorksData } from "lib/works-api";
+import { GetStaticProps } from "next";
+import { Post } from "src/models/Post.model";
+import { LocaleUnion } from "src/models/Translation.model";
+import { Work } from "src/models/Works.model";
 import PageTransitionWrapper from "../components/Layout/PageTransitionWrapper";
-import WorksGrid from "../components/Works/WorksGrid";
 import PostList from "../components/Posts/PostList";
 import Container from "../components/UI/Container";
 import LinkButton from "../components/UI/LinkButton";
+import WorksGrid from "../components/Works/WorksGrid";
 
-function HomePage({ latestThreeWorks, latestTwoPosts }) {
+interface PageProps {
+  latestThreeWorks: Work[];
+  latestTwoPosts: Post[];
+}
+
+const Page = ({ latestThreeWorks, latestTwoPosts }: PageProps) => {
   const { t } = useTranslation("common");
 
   return (
@@ -45,12 +54,12 @@ function HomePage({ latestThreeWorks, latestTwoPosts }) {
       </PageTransitionWrapper>
     </>
   );
-}
+};
 
-export default HomePage;
+export default Page;
 
-export async function getStaticProps(context) {
-  const { locale } = context;
+export const getStaticProps: GetStaticProps = async (context) => {
+  const locale = context.locale as LocaleUnion;
 
   const allPosts = getAllPosts(FULL_POST_ITEM_MATTER_TYPES, locale);
   const latestTwoPosts = allPosts.slice(0, 2);
@@ -65,4 +74,4 @@ export async function getStaticProps(context) {
     },
     revalidate: REVALIDATION_DUR,
   };
-}
+};
