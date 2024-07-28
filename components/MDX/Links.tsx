@@ -1,7 +1,12 @@
 import Link from "next/link";
+import { ReactNode } from "react";
 
-export function ATag(props) {
-  const { href, children } = props;
+interface Props {
+  href: string;
+  children: ReactNode;
+}
+
+export const ATag: React.FC<Props> = ({ href, children }) => {
   const isExternal = href.includes("http"); // weak external link check
 
   if (isExternal) {
@@ -22,4 +27,4 @@ export function ATag(props) {
       </Link>
     );
   }
-}
+};

@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo";
 import useTranslation from "next-translate/useTranslation";
-import PageTransitionWrapper from "../../components/Layout/PageTransitionWrapper";
+import { PageTransitionWrapper } from "../../components/Layout/PageTransitionWrapper";
 import { PageTitle } from "../../components/Layout/Second/PageTitle";
 import PostArchive from "../../components/Posts/PostArchive";
 import { Container } from "../../components/UI/Container";

@@ -1,15 +1,19 @@
+import { Breadcrumb } from "components/Layout/Second/Breadcrumbs.model";
 import fs from "fs";
 import { bundleMDX } from "mdx-bundler";
+import { GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-import Error404 from "../../components/Layout/Error404";
-import PageTransitionWrapper from "../../components/Layout/PageTransitionWrapper";
+import { Post } from "src/models/Post.model";
+import { LocaleUnion } from "src/models/Translation.model";
+import { Error404 } from "../../components/Layout/Error404";
+import { PageTransitionWrapper } from "../../components/Layout/PageTransitionWrapper";
 import { PageTitle } from "../../components/Layout/Second/PageTitle";
-import PostBody from "../../components/Posts/PostBody";
+import { PostBody } from "../../components/Posts/PostBody";
 import PostHead from "../../components/Posts/PostHead";
 import PostList from "../../components/Posts/PostList";
-import Container from "../../components/UI/Container";
+import { Container } from "../../components/UI/Container";
 import LinkButton from "../../components/UI/LinkButton";
 import WaveBreak from "../../components/UI/WaveBreak";
 import {
@@ -20,20 +24,20 @@ import {
 } from "../../lib/constants";
 import { getAllPosts, getPostBySlug } from "../../lib/posts-api";
 
-function PostPage({ post, morePosts }) {
+interface PageProps {
+  post: Post;
+  morePosts: Post[];
+}
+
+const Page = ({ post, morePosts }: PageProps) => {
   const router = useRouter();
   const { t, lang } = useTranslation("common");
 
   if (!router.isFallback && !post?.slug) return <Error404 />;
 
-  const catPath = {
-    pathname: "/posts",
-    query: { filterBy: post.categorySlug },
-  };
-
-  const breadcrumbs = [
+  const breadcrumbs: Breadcrumb[] = [
     { name: t("posts-title"), url: "/posts/" },
-    { name: post.categoryName, url: catPath },
+    { name: post.categoryName, url: `/posts?filterBy=${post.categorySlug}` },
   ];
 
   return (
@@ -85,27 +89,31 @@ function PostPage({ post, morePosts }) {
       </Container>
     </PageTransitionWrapper>
   );
-}
+};
 
-export default PostPage;
+export default Page;
 
-export async function getStaticProps({ params, locale }) {
+export const getStaticProps: GetStaticProps<PageProps> = async ({
+  params,
+  locale,
+}) => {
+  if (!locale || typeof params?.slug !== "string")
+    throw new Error("Something went wrong generating props for Post page");
+
   /**
    * MDX
    */
-  let post;
 
-  post = getPostBySlug(params.slug, POST_BODY_MATTER_TYPES, locale);
+  const post = getPostBySlug(
+    params.slug,
+    POST_BODY_MATTER_TYPES,
+    locale as LocaleUnion
+  );
 
-  const result = await bundleMDX(post.content, {
+  const result = await bundleMDX({
+    source: post.content,
     files: {
-      ".Code.jsx": fs.readFileSync("components/MDX/Code.jsx"),
-      ".ExampleMDXComponent.jsx": fs.readFileSync(
-        "components/MDX/ExampleMDXComponent.jsx"
-      ),
-      "./Clouds.jsx": fs.readFileSync("components/UI/Animations/Clouds.jsx"),
-      "./Hill.jsx": fs.readFileSync("components/UI/Animations/Hill.jsx"),
-      "./Cloud": fs.readFileSync("components/UI/Animations/Cloud.jsx"),
+      "./Code.tsx": fs.readFileSync("components/MDX/Code.tsx").toString(),
     },
   });
   const { code: content } = result;
@@ -113,7 +121,10 @@ export async function getStaticProps({ params, locale }) {
   /**
    * More Posts
    */
-  const allPosts = getAllPosts(SHORT_POST_ITEM_MATTER_TYPES, locale);
+  const allPosts = getAllPosts(
+    SHORT_POST_ITEM_MATTER_TYPES,
+    locale as LocaleUnion
+  );
   const morePosts = allPosts
     .filter((currentPost) => currentPost.slug != post.slug)
     .slice(0, 2);
@@ -128,7 +139,7 @@ export async function getStaticProps({ params, locale }) {
     },
     revalidate: REVALIDATION_DUR,
   };
-}
+};
 
 export async function getStaticPaths() {
   const enPosts = getAllPosts(["slug"], "en");

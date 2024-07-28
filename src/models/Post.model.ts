@@ -1,5 +1,7 @@
 export interface Post {
   title: string;
+  slug: string;
+  content: string;
   categoryName: "コード";
   categorySlug: PostCategorySlugUnion;
   excerpt: string;

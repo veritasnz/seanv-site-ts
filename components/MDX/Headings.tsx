@@ -5,47 +5,42 @@
 
 import Icon from "../UI/Icons/Icon";
 
-function getAnchorID(text) {
+function getAnchorID(text: string) {
   let idSlug = text
     .toLowerCase()
     .replace(/[^a-z0-9 ]/g, "")
     .replace(/[ ]/g, "-");
 
-  if (idSlug.trim() !== "") {
-    return idSlug; // Valid id slug (English)
-  }
-
+  if (idSlug.trim() !== "") return idSlug; // Valid id slug (English)
   return text; // Invalid id slug (Japanese)
 }
 
-function getLink(link) {
-  return (
-    <a href={link}>
-      <Icon name="anchor" />
-    </a>
-  );
-}
-
-export function H2({ children }) {
+export const H2: React.FC<{ children: string }> = ({ children }) => {
   const anchor = getAnchorID(children);
   const link = `#${anchor}`;
 
   return (
     <h2 id={anchor} className="o-anchor-heading">
       {children}
-      {getLink(link)}
+
+      <a href={link}>
+        <Icon name="anchor" />
+      </a>
     </h2>
   );
-}
+};
 
-export function H3({ children }) {
+export const H3: React.FC<{ children: string }> = ({ children }) => {
   const anchor = getAnchorID(children);
   const link = `#${anchor}`;
 
   return (
     <h3 id={anchor} className="o-anchor-heading">
       {children}
-      {getLink(link)}
+
+      <a href={link}>
+        <Icon name="anchor" />
+      </a>
     </h3>
   );
-}
+};
