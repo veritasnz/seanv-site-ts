@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
 import { Router } from "next/router";
+import React, { useRef } from "react";
 
 import NavLink from "./NavLink";
 
@@ -33,15 +33,9 @@ function HamburgerMenu() {
           </div>
         </button>
         <nav className="menu__nav">
-          <NavLink href="/" activeClassName="active">
-            <a>Home</a>
-          </NavLink>
-          <NavLink href="/posts" activeClassName="active">
-            <a>Articles</a>
-          </NavLink>
-          <NavLink href="/works" activeClassName="active">
-            <a>Works</a>
-          </NavLink>
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/posts">Articles</NavLink>
+          <NavLink href="/works">Works</NavLink>
         </nav>
       </div>
     </div>

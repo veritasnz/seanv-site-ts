@@ -17,8 +17,8 @@ export function ATag(props) {
     );
   } else {
     return (
-      <Link href={href}>
-        <a className="o-link">{children}</a>
+      <Link href={href} className="o-link">
+        {children}
       </Link>
     );
   }

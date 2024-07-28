@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import Icon from "../../UI/Icons/Icon";
 
@@ -17,10 +17,13 @@ export default function LangButton(props) {
   }
 
   return (
-    <Link href={router.asPath} locale={oppositeLocale}>
-      <a className="lang-button o-drop-in" title={title}>
-        <Icon name={oppositeIconName} />
-      </a>
+    <Link
+      href={router.asPath}
+      locale={oppositeLocale}
+      className="lang-button o-drop-in"
+      title={title}
+    >
+      <Icon name={oppositeIconName} />
     </Link>
   );
 }

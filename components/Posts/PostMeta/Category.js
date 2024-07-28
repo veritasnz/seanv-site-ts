@@ -10,11 +10,9 @@ export default function Category(props) {
   };
 
   return (
-    <Link href={path}>
-      <a className="cat">
-        <Icon name={slug} tooltip={tooltip} />
-        {noText ? "" : <span>{name}</span>}
-      </a>
+    <Link href={path} className="cat">
+      <Icon name={slug} tooltip={tooltip} />
+      {noText ? "" : <span>{name}</span>}
     </Link>
   );
 }
