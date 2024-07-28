@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,25 +19,14 @@ const createLink = ({ icon, url, tooltip }) => {
   } else {
     return (
       <li className={"icon-list__item"} key={icon}>
-        <Link href={url}>
-          <a>{iconComponent}</a>
-        </Link>
+        <Link href={url}>{iconComponent}</Link>
       </li>
     );
   }
 };
 
 export default function WorksItem(props) {
-  const {
-    name,
-    url,
-    thumbnailURL,
-    placeholderData,
-    type,
-    stack,
-    summary,
-    links,
-  } = props.work;
+  const { name, url, thumbnail, type, stack, summary, links } = props.work;
 
   /**
    * Title
@@ -60,8 +48,8 @@ export default function WorksItem(props) {
       );
     } else {
       titleContents = (
-        <Link href={url}>
-          <a className="o-link">{name}</a>
+        <Link href={url} className="o-link">
+          {name}
         </Link>
       );
     }
@@ -102,13 +90,12 @@ export default function WorksItem(props) {
     <li className="works-item">
       <div className="works-item__img">
         <div>
-          {createPlaceholderSVG(placeholderData)}
           <Image
-            src={thumbnailURL}
+            src={thumbnail}
             alt={name}
             quality="100"
             layout="fill"
-            type="png"
+            placeholder="blur"
           />
         </div>
       </div>
@@ -124,23 +111,3 @@ export default function WorksItem(props) {
     </li>
   );
 }
-
-const createPlaceholderSVG = (svg) => {
-  return React.createElement(
-    svg[0],
-    {
-      ...svg[1],
-      style: {
-        ...svg[1].style,
-        transform: ["scale(1.5)", svg[1].style.transform].join(" "),
-        filter: "blur(40px)",
-      },
-    },
-    svg[2].map((child) =>
-      React.createElement(child[0], {
-        key: [child[1].x, child[1].y].join(),
-        ...child[1],
-      })
-    )
-  );
-};

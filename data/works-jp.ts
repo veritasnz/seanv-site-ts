@@ -1,11 +1,20 @@
-const works = [
+import { Work } from "src/models/Works.model";
+import BoilerplateThumbnail from "./img/works/boilerplate.png";
+import VariousSitesThumbnail from "./img/works/client-sites.png";
+import DevclockThumbnail from "./img/works/devclock.png";
+import KurageThumbnail from "./img/works/kurage-digital.png";
+import MaplinkThumbnail from "./img/works/map-link.png";
+import WonidetoThumbnail from "./img/works/wonideto.png";
+import NextWordlessThumbnail from "./img/works/wordless.png";
+
+const works: Work[] = [
   /**
    * Wonideto
    */
   {
     name: "Wonideto (をにでと)",
     url: "https://wonideto.seanv.dev/",
-    thumbnailURL: "/img/works/wonideto.png",
+    thumbnail: WonidetoThumbnail,
     type: "個人プロジェクト・アプリ",
     stack: ["typescript", "nextjs", "react", "nodejs"],
     summary:
@@ -29,7 +38,7 @@ const works = [
   {
     name: "NextJSでヘッドレスWP",
     url: "https://github.com/veritasnz/next-wordless-front",
-    thumbnailURL: "/img/works/wordless.png",
+    thumbnail: NextWordlessThumbnail,
     type: "個人プロジェクト・アプリ",
     stack: ["nextjs", "react", "graphql", "wordpress", "nodejs", "php"],
     summary:
@@ -54,7 +63,7 @@ const works = [
   {
     name: "_Devclock",
     url: "https://devclock.seanv.dev/",
-    thumbnailURL: "/img/works/devclock.png",
+    thumbnail: DevclockThumbnail,
     type: "個人プロジェクト - アプリ",
     stack: ["react", "redux", "javascript"],
     summary:
@@ -74,7 +83,7 @@ const works = [
   {
     name: "Wordpressテンプレート",
     url: null,
-    thumbnailURL: "/img/works/boilerplate.png",
+    thumbnail: BoilerplateThumbnail,
     type: "個人プロジェクト",
     stack: ["wordpress", "webpack", "sass", "javascript", "php"],
     summary:
@@ -94,7 +103,7 @@ const works = [
   {
     name: "クラゲデジタルＨＰ",
     url: "https://kuragedigital.com/",
-    thumbnailURL: "/img/works/kurage-digital.png",
+    thumbnail: KurageThumbnail,
     type: "顧客依頼 - デザイン&開発",
     stack: ["wordpress", "sass", "javascript", "php"],
     summary:
@@ -108,7 +117,7 @@ const works = [
   {
     name: "今までの依頼集",
     url: "/posts/various-client-sites",
-    thumbnailURL: "/img/works/client-sites.png",
+    thumbnail: VariousSitesThumbnail,
     type: "顧客依頼 - 開発",
     stack: ["wordpress", "sass", "javascript", "php"],
     summary:
@@ -128,7 +137,7 @@ const works = [
   {
     name: "マップリンク",
     url: "/posts/map-link-app",
-    thumbnailURL: "/img/works/map-link.png",
+    thumbnail: MaplinkThumbnail,
     type: "顧客依頼 - 開発",
     stack: ["react", "svg", "javascript"],
     summary:

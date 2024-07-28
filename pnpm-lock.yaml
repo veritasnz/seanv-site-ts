@@ -19,9 +19,6 @@ devDependencies:
   '@next/bundle-analyzer':
     specifier: ^14.2.5
     version: 14.2.5
-  '@plaiceholder/next':
-    specifier: ^3.0.0
-    version: 3.0.0(next@14.2.5)(plaiceholder@3.0.0)(sharp@0.33.4)
   '@svgr/webpack':
     specifier: ^8.1.0
     version: 8.1.0(typescript@5.5.4)
@@ -67,9 +64,6 @@ devDependencies:
   next-translate-plugin:
     specifier: ^2.6.2
     version: 2.6.2(next-translate@2.6.2)
-  plaiceholder:
-    specifier: ^3.0.0
-    version: 3.0.0(sharp@0.33.4)
   prism-react-renderer:
     specifier: ^2.3.1
     version: 2.3.1(react@18.3.1)
@@ -2139,18 +2133,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@plaiceholder/next@3.0.0(next@14.2.5)(plaiceholder@3.0.0)(sharp@0.33.4):
-    resolution: {integrity: sha512-7UK/H1X64hwo2VaxOPKMXE+OY9IgmKLPsq/xKHZ+gU07oqQSfIWWIgpVVucMB3ZgVYah+68agR15BRuSxAuMHw==}
-    peerDependencies:
-      next: '>= 10.0.0'
-      plaiceholder: '>=3.0.0'
-      sharp: '>= 0.30.6'
-    dependencies:
-      next: 14.2.5(@babel/core@7.24.9)(react-dom@18.3.1)(react@18.3.1)(sass@1.77.8)
-      plaiceholder: 3.0.0(sharp@0.33.4)
-      sharp: 0.33.4
-    dev: true
 
   /@polka/url@1.0.0-next.25:
     resolution: {integrity: sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==}
@@ -5336,14 +5318,6 @@ packages:
   /picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
-
-  /plaiceholder@3.0.0(sharp@0.33.4):
-    resolution: {integrity: sha512-jwHxxHPnr1BwRzPCeZgEK2BMsEy2327sWynw3qb6XC/oGgGDUTPtR8pFxFQmNArhMBwhkUbUr5OPhhIJpCa8eQ==}
-    peerDependencies:
-      sharp: '>= 0.30.6'
-    dependencies:
-      sharp: 0.33.4
-    dev: true
 
   /possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}
