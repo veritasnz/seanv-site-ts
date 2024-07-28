@@ -61,6 +61,9 @@ devDependencies:
   next-sitemap:
     specifier: ^4.2.3
     version: 4.2.3(next@14.2.5)
+  next-translate:
+    specifier: ^2.6.2
+    version: 2.6.2(next@14.2.5)(react@18.3.1)
   next-translate-plugin:
     specifier: ^2.6.2
     version: 2.6.2(next-translate@2.6.2)
