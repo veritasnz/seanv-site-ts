@@ -36,7 +36,7 @@
     "next-translate-plugin": "^2.6.2",
     "prism-react-renderer": "^2.3.1",
     "prismjs": "^1.29.0",
-    "react-obfuscate": "^3.6.9",
+    "react-obfuscate-email": "^1.1.5",
     "sass": "^1.77.8",
     "sharp": "^0.33.4",
     "typescript": "^5",

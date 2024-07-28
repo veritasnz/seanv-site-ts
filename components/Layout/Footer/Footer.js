@@ -1,11 +1,10 @@
-import React from "react";
-import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans";
-
+import useTranslation from "next-translate/useTranslation";
+import React from "react";
 import Vincent from "../../../svg/vincent-footer.svg";
 import Clouds from "../../UI/Animations/Clouds";
 import Hill from "../../UI/Animations/Hill";
-import SocialLinks from "../SocialLinks";
+import { SocialLinks } from "../SocialLinks";
 
 function Footer() {
   const { t } = useTranslation("common");
