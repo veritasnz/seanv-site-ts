@@ -1,6 +1,6 @@
 export * from "react";
 
-import Clouds from "./Clouds";
+import { Clouds } from "./Clouds";
 import Hill from "./Hill";
 
 function ExampleMDXComponent() {

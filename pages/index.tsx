@@ -6,17 +6,17 @@ import {
 } from "../lib/constants";
 import { getAllPosts } from "../lib/posts-api";
 
-import About from "../components/Home/About";
-import Hero from "../components/Home/Hero";
+import { About } from "../components/Home/About";
+import { Hero } from "../components/Home/Hero";
 
 import { getWorksData } from "lib/works-api";
 import { GetStaticProps } from "next";
 import { Post } from "src/models/Post.model";
 import { LocaleUnion } from "src/models/Translation.model";
 import { Work } from "src/models/Works.model";
-import PageTransitionWrapper from "../components/Layout/PageTransitionWrapper";
+import { PageTransitionWrapper } from "../components/Layout/PageTransitionWrapper";
 import PostList from "../components/Posts/PostList";
-import Container from "../components/UI/Container";
+import { Container } from "../components/UI/Container";
 import LinkButton from "../components/UI/LinkButton";
 import WorksGrid from "../components/Works/WorksGrid";
 

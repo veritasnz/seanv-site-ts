@@ -1,20 +1,22 @@
 import { NextSeo } from "next-seo";
-import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans";
-
-import PageTitle from "./Second/PageTitle";
-import Container from "../UI/Container";
+import useTranslation from "next-translate/useTranslation";
+import { Container } from "../UI/Container";
 import LinkButton from "../UI/LinkButton";
+import { Breadcrumb } from "./Second/Breadcrumbs.model";
+import { PageTitle } from "./Second/PageTitle";
 
-export default function Error404() {
+interface Props {}
+
+const BREADCRUMBS: Breadcrumb[] = [{ name: "404", url: null }];
+
+export const Error404: React.FC<Props> = ({}) => {
   const { t } = useTranslation("common");
-
-  const breadcrumbs = [{ name: "404", url: null }];
 
   return (
     <>
       <NextSeo title={"404"} />
-      <PageTitle title={t("404-title")} breadcrumbs={breadcrumbs} />
+      <PageTitle title={t("404-title")} breadcrumbs={BREADCRUMBS} />
       <Container type="second" width="thin">
         <div className="t-404">
           <h2 className="t-404__subtitle o-subtitle">
@@ -35,4 +37,4 @@ export default function Error404() {
       </Container>
     </>
   );
-}
+};

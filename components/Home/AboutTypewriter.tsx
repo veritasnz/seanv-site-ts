@@ -1,7 +1,9 @@
 import useTranslation from "next-translate/useTranslation";
 import Typewriter from "typewriter-effect";
 
-export default function AboutTypewriter() {
+interface Props {}
+
+export const AboutTypewriter: React.FC<Props> = () => {
   const { t } = useTranslation("common");
 
   const base = t("about-typewriter-base");
@@ -9,16 +11,12 @@ export default function AboutTypewriter() {
     "about-typewriter-content",
     { count: 1 },
     { returnObjects: true }
-  );
-
-  const stringsToType = translationArray.map((item) => {
-    return item.text;
-  });
+  ) as { text: string }[];
 
   const typewriterOptions = {
     delay: 90, // speed up insertion
     deleteSpeed: 40, // speed up deletion
-    strings: stringsToType,
+    strings: translationArray.map((item) => item.text),
     autoStart: true,
     loop: true,
     cursor: "_",
@@ -30,4 +28,4 @@ export default function AboutTypewriter() {
       <Typewriter options={typewriterOptions} />
     </>
   );
-}
+};

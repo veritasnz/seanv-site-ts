@@ -1,13 +1,11 @@
-import useTranslation from "next-translate/useTranslation";
 import { NextSeo } from "next-seo";
-
+import useTranslation from "next-translate/useTranslation";
+import PageTransitionWrapper from "../components/Layout/PageTransitionWrapper";
+import { PageTitle } from "../components/Layout/Second/PageTitle";
+import { Container } from "../components/UI/Container";
+import WorksGrid from "../components/Works/WorksGrid";
 import { REVALIDATION_DUR } from "../lib/constants";
 import { getWorksData } from "../lib/works-api";
-
-import WorksGrid from "../components/Works/WorksGrid";
-import PageTitle from "../components/Layout/Second/PageTitle";
-import Container from "../components/UI/Container";
-import PageTransitionWrapper from "../components/Layout/PageTransitionWrapper";
 
 function WorksArchive(props) {
   const { t } = useTranslation("common");

@@ -1,16 +1,14 @@
-import useTranslation from "next-translate/useTranslation";
 import { NextSeo } from "next-seo";
-
+import useTranslation from "next-translate/useTranslation";
+import PageTransitionWrapper from "../../components/Layout/PageTransitionWrapper";
+import { PageTitle } from "../../components/Layout/Second/PageTitle";
+import PostArchive from "../../components/Posts/PostArchive";
+import { Container } from "../../components/UI/Container";
 import {
   FULL_POST_ITEM_MATTER_TYPES,
   REVALIDATION_DUR,
 } from "../../lib/constants";
 import { getAllPosts } from "../../lib/posts-api";
-
-import PageTransitionWrapper from "../../components/Layout/PageTransitionWrapper";
-import PostArchive from "../../components/Posts/PostArchive";
-import PageTitle from "../../components/Layout/Second/PageTitle";
-import Container from "../../components/UI/Container";
 
 function PostsPage(props) {
   const { allPosts, allTerms } = props;

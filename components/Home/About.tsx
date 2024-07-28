@@ -1,10 +1,12 @@
-import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans";
+import useTranslation from "next-translate/useTranslation";
 
-import AboutTypewriter from "./AboutTypewriter";
 import IconList from "../UI/Icons/IconList";
+import { AboutTypewriter } from "./AboutTypewriter";
 
-export default function About(props) {
+interface Props {}
+
+export const About: React.FC<Props> = ({}) => {
   const { t } = useTranslation("common");
 
   return (
@@ -44,4 +46,4 @@ export default function About(props) {
       </div>
     </>
   );
-}
+};

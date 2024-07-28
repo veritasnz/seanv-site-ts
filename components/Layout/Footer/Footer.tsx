@@ -2,18 +2,20 @@ import Trans from "next-translate/Trans";
 import useTranslation from "next-translate/useTranslation";
 import React from "react";
 import Vincent from "../../../svg/vincent-footer.svg";
-import Clouds from "../../UI/Animations/Clouds";
+import { Clouds } from "../../UI/Animations/Clouds";
 import Hill from "../../UI/Animations/Hill";
 import { SocialLinks } from "../SocialLinks";
 
-function Footer() {
+interface Props {}
+
+export const Footer: React.FC<Props> = ({}) => {
   const { t } = useTranslation("common");
 
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="footer">
-      <Clouds count="6" />
+      <Clouds count={6} />
       <div className="footer__wrap">
         <div className="footer__hill-1">
           <Hill height={180} color="blue" />
@@ -25,7 +27,11 @@ function Footer() {
           <p className="footer__text">
             <Trans i18nKey="common:footer-text" components={[<br key="0" />]} />
           </p>
-          <SocialLinks className="footer__social" />
+          <SocialLinks
+            className="footer__social"
+            color="inherit"
+            hasTooltip={true}
+          />
           <p className="footer__copy">
             {`${t("footer-copy")} ©︎ ${currentYear}`}
           </p>
@@ -44,6 +50,4 @@ function Footer() {
       </div>
     </footer>
   );
-}
-
-export default React.memo(Footer);
+};

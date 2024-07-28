@@ -1,11 +1,11 @@
-import Clouds from "components/UI/Animations/Clouds";
+import { Clouds } from "components/UI/Animations/Clouds";
 import { AnimatePresence } from "framer-motion";
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { LocaleUnion } from "src/models/Translation.model";
-import Footer from "../components/Layout/Footer/Footer";
-import Header from "../components/Layout/Header/Header";
+import { Footer } from "../components/Layout/Footer/Footer";
+import { Header } from "../components/Layout/Header/Header";
 import { SITE_URL } from "../lib/constants";
 import "../styles/style.global.scss";
 
@@ -63,8 +63,8 @@ function App({ Component, pageProps, router }: AppProps) {
       <Header />
 
       <main className={isEnglish ? "en" : "jp"}>
-        <Clouds count="3" yOffset="-2vw" />
-        <Clouds count="2" yOffset="-2vw" />
+        <Clouds count={3} yOffset="-2vw" />
+        <Clouds count={2} yOffset="-2vw" />
 
         <AnimatePresence mode="wait">
           <Component {...pageProps} key={router.asPath} />

@@ -1,6 +1,11 @@
 import Cloud from "./Cloud";
 
-export default function Clouds({ count, yOffset = 0 }) {
+interface Props {
+  count: number;
+  yOffset?: string | number;
+}
+
+export const Clouds: React.FC<Props> = ({ count, yOffset = 0 }) => {
   let cloudArray = [];
 
   for (let i = 0; i < count; i++) {
@@ -13,4 +18,4 @@ export default function Clouds({ count, yOffset = 0 }) {
       {cloudArray}
     </div>
   );
-}
+};

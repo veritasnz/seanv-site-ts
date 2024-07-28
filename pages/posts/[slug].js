@@ -1,27 +1,24 @@
-import { useRouter } from "next/router";
-import useTranslation from "next-translate/useTranslation";
+import fs from "fs";
 import { bundleMDX } from "mdx-bundler";
 import { NextSeo } from "next-seo";
-import fs from "fs";
-
-import {
-  SHORT_POST_ITEM_MATTER_TYPES,
-  POST_BODY_MATTER_TYPES,
-  REVALIDATION_DUR,
-  SITE_URL,
-} from "../../lib/constants";
-
-import { getPostBySlug, getAllPosts } from "../../lib/posts-api";
-
-import PageTransitionWrapper from "../../components/Layout/PageTransitionWrapper";
+import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 import Error404 from "../../components/Layout/Error404";
+import PageTransitionWrapper from "../../components/Layout/PageTransitionWrapper";
+import { PageTitle } from "../../components/Layout/Second/PageTitle";
 import PostBody from "../../components/Posts/PostBody";
-import PostList from "../../components/Posts/PostList";
-import PageTitle from "../../components/Layout/Second/PageTitle";
-import Container from "../../components/UI/Container";
 import PostHead from "../../components/Posts/PostHead";
+import PostList from "../../components/Posts/PostList";
+import Container from "../../components/UI/Container";
 import LinkButton from "../../components/UI/LinkButton";
 import WaveBreak from "../../components/UI/WaveBreak";
+import {
+  POST_BODY_MATTER_TYPES,
+  REVALIDATION_DUR,
+  SHORT_POST_ITEM_MATTER_TYPES,
+  SITE_URL,
+} from "../../lib/constants";
+import { getAllPosts, getPostBySlug } from "../../lib/posts-api";
 
 function PostPage({ post, morePosts }) {
   const router = useRouter();

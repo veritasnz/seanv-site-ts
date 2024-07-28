@@ -1,11 +1,16 @@
-import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import Link from "next/link";
+import { ReactNode } from "react";
+import { Breadcrumb } from "./Breadcrumbs.model";
 
-export default function Breadcrumbs(props) {
-  const { data } = props;
+interface Props {
+  crumbs: Breadcrumb[];
+}
+
+export const Breadcrumbs: React.FC<Props> = ({ crumbs }) => {
   const { t } = useTranslation("common");
 
-  const breadcrumbContent = [];
+  const breadcrumbContent: JSX.Element[] = [];
 
   // Add home crumb
   breadcrumbContent.push(
@@ -16,11 +21,15 @@ export default function Breadcrumbs(props) {
 
   // Push rest of crumbs
   breadcrumbContent.push(
-    data.map((crumb) => {
-      let crumbInner = crumb.name;
+    ...crumbs.map((crumb) => {
+      let crumbInner: ReactNode = crumb.name;
 
       if (crumb.url !== null) {
-        crumbInner = <Link href={crumb.url}>{crumb.name}</Link>;
+        crumbInner = (
+          <li key={crumb.name}>
+            <Link href={crumb.url}>{crumb.name}</Link>
+          </li>
+        );
       }
 
       return (
@@ -32,4 +41,4 @@ export default function Breadcrumbs(props) {
   );
 
   return <ul className="breadcrumbs">{breadcrumbContent}</ul>;
-}
+};

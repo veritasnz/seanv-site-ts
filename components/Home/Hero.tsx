@@ -1,12 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans";
-import Obfuscate from "react-obfuscate";
+import useTranslation from "next-translate/useTranslation";
+import { Email } from "react-obfuscate-email";
 
 import HeroImage from "../../svg/vincent-hero.svg";
 import Hill from "../UI/Animations/Hill";
 
-export default function Hero(props) {
+interface Props {}
+
+export const Hero: React.FC<Props> = (props) => {
   const { t } = useTranslation("common");
 
   return (
@@ -26,16 +28,19 @@ export default function Hero(props) {
             <Trans i18nKey="common:hero-cta" components={[<br key="0" />]} />
           </p>
           <div className="t-hero__bttnbox">
-            <Obfuscate
-              className="o-bttn o-bttn--blue"
-              email={process.env.NEXT_PUBLIC_EMAIL}
-              obfuscateChildren={false}
-            >
-              {t("hero-contact-button")}
-            </Obfuscate>
+            {process.env.NEXT_PUBLIC_EMAIL && (
+              <Email
+                className="o-bttn o-bttn--blue"
+                email={process.env.NEXT_PUBLIC_EMAIL}
+                subject="Hi there!"
+              >
+                {t("hero-contact-button")}
+              </Email>
+            )}
+
             {/* <LinkButton href="#">
-                            {t("hero-resume-button")}
-                        </LinkButton> */}
+                  {t("hero-resume-button")}
+              </LinkButton> */}
           </div>
         </div>
       </div>
@@ -59,4 +64,4 @@ export default function Hero(props) {
       </div>
     </section>
   );
-}
+};

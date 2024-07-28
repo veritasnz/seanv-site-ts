@@ -1,13 +1,16 @@
 import { Router } from "next/router";
 import React, { useRef } from "react";
 
-import NavLink from "./NavLink";
+import { NavLink } from "./NavLink";
 
-function HamburgerMenu() {
-  const menuRef = useRef();
+interface Props {}
+
+export const HamburgerMenu: React.FC<Props> = ({}) => {
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
   // Toggle
   const toggleMenuHandler = () => {
+    if (!menuRef.current) return;
     menuRef.current.classList.toggle("is-active");
   };
   // Close
@@ -40,6 +43,4 @@ function HamburgerMenu() {
       </div>
     </div>
   );
-}
-
-export default React.memo(HamburgerMenu);
+};

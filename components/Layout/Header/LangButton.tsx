@@ -3,7 +3,9 @@ import { useRouter } from "next/router";
 
 import Icon from "../../UI/Icons/Icon";
 
-export default function LangButton(props) {
+interface Props {}
+
+export const LangButton: React.FC<Props> = ({}) => {
   const router = useRouter();
 
   let oppositeLocale = "jp";
@@ -26,4 +28,4 @@ export default function LangButton(props) {
       <Icon name={oppositeIconName} />
     </Link>
   );
-}
+};

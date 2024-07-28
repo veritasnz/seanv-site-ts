@@ -1,13 +1,16 @@
 import { useRef } from "react";
-
 import Icon from "../../UI/Icons/Icon";
-import SocialLinks from "../SocialLinks";
+import { SocialLinks } from "../SocialLinks";
 
-export default function SocialDropdown() {
-  const parentRef = useRef();
+interface Props {}
+
+export const SocialDropdown: React.FC<Props> = () => {
+  const parentRef = useRef<HTMLDivElement | null>(null);
 
   // Toggle
   const toggleMenuHandler = () => {
+    if (!parentRef.current) return;
+
     if (parentRef.current.classList.contains("is-open")) {
       // Close
       parentRef.current.classList.remove("is-open");
@@ -43,4 +46,4 @@ export default function SocialDropdown() {
       </div>
     </>
   );
-}
+};
