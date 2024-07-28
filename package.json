@@ -3,22 +3,44 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ts": "tsc --noEmit --incremental",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
+    "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.5"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@next/bundle-analyzer": "^14.2.5",
+    "@plaiceholder/next": "^3.0.0",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "date-fns": "^3.6.0",
     "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "eslint-config-next": "14.2.5",
+    "framer-motion": "^11.3.19",
+    "gray-matter": "^4.0.3",
+    "ismobilejs": "^1.1.1",
+    "mdx-bundler": "^10.0.2",
+    "next-seo": "^6.5.0",
+    "next-sitemap": "^4.2.3",
+    "next-translate": "^2.6.2",
+    "plaiceholder": "^3.0.0",
+    "prism-react-renderer": "^2.3.1",
+    "prismjs": "^1.29.0",
+    "react-obfuscate": "^3.6.9",
+    "sass": "^1.77.8",
+    "sharp": "^0.33.4",
+    "typescript": "^5",
+    "typewriter-effect": "^2.21.0"
   }
 }
