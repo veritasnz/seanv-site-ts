@@ -8,10 +8,11 @@
  */
 declare module "next-translate/useTranslation" {
   import { Translate } from "next-translate";
+  import { LocaleUnion } from "src/models/Translation.model";
 
   export type I18n = {
     t: Translate;
-    lang: "en" | "ja";
+    lang: LocaleUnion;
   };
 
   export default function useTranslation(defaultNS?: string): I18n;
