@@ -1,12 +1,12 @@
+import Clouds from "components/UI/Animations/Clouds";
 import { AnimatePresence } from "framer-motion";
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { LocaleUnion } from "src/models/Translation.model";
+import Footer from "../components/Layout/Footer/Footer";
+import Header from "../components/Layout/Header/Header";
 import { SITE_URL } from "../lib/constants";
-import * as gtag from "../lib/gtag";
 import "../styles/style.global.scss";
 
 function App({ Component, pageProps, router }: AppProps) {
@@ -50,18 +50,6 @@ function App({ Component, pageProps, router }: AppProps) {
     },
   };
 
-  /**
-   * Analytics Setup
-   */
-  const gtagRouter = useRouter();
-
-  useEffect(() => {
-    const handleRouteChange = (url: string) => gtag.pageview(url);
-    gtagRouter.events.on("routeChangeComplete", handleRouteChange);
-    return () =>
-      gtagRouter.events.off("routeChangeComplete", handleRouteChange);
-  }, [gtagRouter.events]);
-
   return (
     <>
       <Head>
@@ -72,9 +60,18 @@ function App({ Component, pageProps, router }: AppProps) {
 
       <DefaultSeo {...seo} />
 
-      <AnimatePresence mode="wait">
-        <Component {...pageProps} key={router.asPath} />
-      </AnimatePresence>
+      <Header />
+
+      <main className={isEnglish ? "en" : "jp"}>
+        <Clouds count="3" yOffset="-2vw" />
+        <Clouds count="2" yOffset="-2vw" />
+
+        <AnimatePresence mode="wait">
+          <Component {...pageProps} key={router.asPath} />
+        </AnimatePresence>
+      </main>
+
+      <Footer />
     </>
   );
 }
